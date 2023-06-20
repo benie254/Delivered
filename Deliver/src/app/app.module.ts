@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxPaginationModule } from 'ngx-pagination';
 import * as Notiflix from 'notiflix';
+import { ReqInterceptor } from './helpers/interceptor/req.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import * as Notiflix from 'notiflix';
     NgxPaginationModule,
     MatExpansionModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ReqInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
