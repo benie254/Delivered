@@ -19,6 +19,11 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { RegisterComponent } from './auth/components/register/register.component';
 import { ResetConfirmedComponent } from './auth/components/reset-confirmed/reset-confirmed.component';
 import { ResetPassComponent } from './auth/components/reset-pass/reset-pass.component';
+import { ChangePassFormComponent } from './auth/forms/change-pass-form/change-pass-form.component';
+import { LoginFormComponent } from './auth/forms/login-form/login-form.component';
+import { RegFormComponent } from './auth/forms/reg-form/reg-form.component';
+import { ResetConfirmedFormComponent } from './auth/forms/reset-confirmed-form/reset-confirmed-form.component';
+import { ResetRequestFormComponent } from './auth/forms/reset-request-form/reset-request-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { ResetPassComponent } from './auth/components/reset-pass/reset-pass.comp
     LoginComponent,
     RegisterComponent,
     ResetConfirmedComponent,
-    ResetPassComponent
+    ResetPassComponent,
+    ChangePassFormComponent,
+    LoginFormComponent,
+    RegFormComponent,
+    ResetConfirmedFormComponent,
+    ResetRequestFormComponent
   ],
   imports: [
     BrowserModule,
