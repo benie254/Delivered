@@ -14,10 +14,20 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxPaginationModule } from 'ngx-pagination';
 import * as Notiflix from 'notiflix';
 import { ReqInterceptor } from './helpers/interceptor/req.interceptor';
+import { ChangePassComponent } from './auth/components/change-pass/change-pass.component';
+import { LoginComponent } from './auth/components/login/login.component';
+import { RegisterComponent } from './auth/components/register/register.component';
+import { ResetConfirmedComponent } from './auth/components/reset-confirmed/reset-confirmed.component';
+import { ResetPassComponent } from './auth/components/reset-pass/reset-pass.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChangePassComponent,
+    LoginComponent,
+    RegisterComponent,
+    ResetConfirmedComponent,
+    ResetPassComponent
   ],
   imports: [
     BrowserModule,
