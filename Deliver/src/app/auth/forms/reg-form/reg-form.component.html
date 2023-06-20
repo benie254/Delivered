@@ -1,1 +1,69 @@
-<p>reg-form works!</p>
+
+<div>
+    <br><br>
+    <form #regForm="ngForm" (ngSubmit)="signUp(regForm.value)">
+        <h1 class="text-center"><i class="fa-solid fa-right-to-bracket"></i> Sign Up</h1>
+            <div class="row">
+              <div class="col-lg-4">
+                <mat-form-field appearance="fill" class="rounded">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Start typing..." name="username" ngModel #username="ngModel" type="text" required>
+                    <mat-error *ngIf="username.hasError('required') || username.pristine">
+                      Username is <strong>required</strong>
+                    </mat-error>
+                    
+                  </mat-form-field>
+                  <br><br>
+              </div>
+             
+
+              <div class="col-lg-4">
+                <mat-form-field appearance="fill" class="rounded">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Start typing..." name="email" ngModel #email="ngModel" type="email" [errorStateMatcher]="matcher" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+                    <mat-error *ngIf="email.hasError('pattern')">
+                      Please enter a <strong>valid email address</strong>
+                    </mat-error>
+                    <mat-error *ngIf="email.hasError('required') || email.pristine">
+                      Email is <strong>required</strong>
+                    </mat-error>
+                    
+                  </mat-form-field><br><br>
+                 
+              </div>
+              <div class="col-lg-4">
+                <mat-form-field appearance="fill" class="rounded full-width">
+                    <mat-label><mat-icon matSuffix>security</mat-icon> Password</mat-label>
+                    <input matInput placeholder="Start typing..." name="password" ngModel #password="ngModel" required (valid)="isValid($event)" (mousedown)="onKeyOne($event)" (keydown)="onKeyOne($event)" (keyup)="onKeyOne($event)" (keypress)="onKeyOne($event)" (mousemove)="onKeyOne($event)" (mouseleave)="onKeyOne($event)">
+                    <h6 id="pass1" class="hide">{{value}}</h6>
+                    <button type="button" mat-icon-button matSuffix [attr.aria-label]="'Hide password'">
+                    </button>
+                    <mat-hint>Password should be <strong>valid</strong></mat-hint>
+                    <mat-error *ngIf="password.hasError('required') || password.pristine">
+                      Password is <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+            <br><br>
+            <mat-form-field *ngIf="!noPass2" appearance="fill" class="rounded full-width" style="margin-top:5%;">
+                <mat-label><mat-icon matSuffix>security</mat-icon> Confirm password</mat-label>
+                <input matInput id="password2" [type]="hide ? 'password' : 'text'" placeholder="Start typing..." (mousemove)="onKey($event);" (mouseover)="onKey($event);"  (mousedown)="onKey($event);" (keydown)="onKey($event);" (keyup)="onKey($event);" (keypress)="onKey($event);" (mouseleave)="onKey($event);" name="password2" ngModel #password2="ngModel" required>
+                <h6 id="pass2" class="hide">{{values}}</h6>
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-hint><span *ngIf="errPass" class="alert alert-danger rounded bold">{{errPass}}</span><span *ngIf="!errPass"><span *ngIf="noMatch" class="alert alert-danger rounded">Your passwords <strong>don't match</strong></span> <span *ngIf="!noMatch" class="alert alert-info rounded"> Passwords <strong>match &nbsp;<i class="fa-solid fa-thumbs-up"></i></strong> </span></span></mat-hint>
+                <mat-error *ngIf="password2.hasError('required') || password2.pristine">
+                  Password is <strong>required</strong>
+                </mat-error>
+                <div >
+                  
+                </div>
+              </mat-form-field> 
+          <br><br>
+              </div>
+            </div>
+            <div class="form-group padding-bottom text-center">
+                <button mat-raised-button color="accent" class="margin-top w-50" type="submit" [disabled]="regForm.invalid"><span><i class="fa-solid fa-user-check"></i></span> Register</button><br><br>
+              </div>
+      </form>
+</div>
