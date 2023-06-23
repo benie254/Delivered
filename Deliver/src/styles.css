@@ -21,3 +21,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         display: none;
     }
 }
+
+.blue{
+    color: blue;
+}
+.orange{
+    color: orangered;
+}
