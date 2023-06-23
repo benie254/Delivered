@@ -27,6 +27,7 @@ import { ResetRequestFormComponent } from './auth/forms/reset-request-form/reset
 import { DeliveryFormComponent } from './forms/delivery-form/delivery-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { HomeComponent } from './components/home/home.component';
     DeliveryFormComponent,
     NavbarComponent,
     HomeComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,
