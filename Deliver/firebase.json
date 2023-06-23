@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "deliver-ke",
     "public": "dist/deliver",
     "ignore": [
       "firebase.json",
