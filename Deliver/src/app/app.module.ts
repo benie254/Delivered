@@ -28,6 +28,9 @@ import { DeliveryFormComponent } from './forms/delivery-form/delivery-form.compo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReportsComponent } from './components/reports/reports.component';
+import { DailyCumulativeComponent } from './components/print/daily-cumulative/daily-cumulative.component';
+import { MonthlyCumulativeComponent } from './components/print/monthly-cumulative/monthly-cumulative.component';
+import { TodayReportsComponent } from './components/print/today-reports/today-reports.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { ReportsComponent } from './components/reports/reports.component';
     NavbarComponent,
     HomeComponent,
     ReportsComponent,
+    DailyCumulativeComponent,
+    MonthlyCumulativeComponent,
+    TodayReportsComponent,
   ],
   imports: [
     BrowserModule,
