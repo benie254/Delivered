@@ -24,6 +24,7 @@ import { LoginFormComponent } from './auth/forms/login-form/login-form.component
 import { RegFormComponent } from './auth/forms/reg-form/reg-form.component';
 import { ResetConfirmedFormComponent } from './auth/forms/reset-confirmed-form/reset-confirmed-form.component';
 import { ResetRequestFormComponent } from './auth/forms/reset-request-form/reset-request-form.component';
+import { DeliveryFormComponent } from './forms/delivery-form/delivery-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ResetRequestFormComponent } from './auth/forms/reset-request-form/reset
     LoginFormComponent,
     RegFormComponent,
     ResetConfirmedFormComponent,
-    ResetRequestFormComponent
+    ResetRequestFormComponent,
+    DeliveryFormComponent,
   ],
   imports: [
     BrowserModule,
