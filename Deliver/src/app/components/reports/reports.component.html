@@ -1,1 +1,221 @@
-<p>reports works!</p>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="text-center">All Reports for <br> <span class="text-primary">{{today | date: 'fullDate'}}</span></h1>
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div *ngIf="!todayReps || todayReps.length == 0" class="card text-bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                          <p class="card-text">Today's reports will appear here as soon as they're uploaded.</p>
+                          <a href="/"><button class="btn btn-primary btn-sm">Upload Now</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div class="table-responsive">
+              <table *ngIf="todayReps && todayReps.length !== 0" class="table table-success table-stripped table-hover table-bordered table-responsive">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Delivered</th>
+                    <th scope="col">Delivered By</th>
+                    <th scope="col">Price Per Ltr</th>
+                    <th scope="col">Amount (Lts)</th>
+                    <th scope="col">Earned (Ksh)</th>
+                    <th scope="col">Received From (Name)</th>
+                    <th scope="col">Mobile No.</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tr of todayReps | paginate: { id:'todayRecords', itemsPerPage: todayTableSize, currentPage: todayPage, totalItems: todayCount}; let i = index">
+                    <th scope="row">{{tr.id}}</th>
+                    <td class="text-primary">{{tr.time | date: 'short'}}</td>
+                    <td class="text-primary">{{tr.delivered_by}}</td>
+                    <td>{{tr.price_pl}}</td>
+                    <td>{{tr.amount}}</td>
+                    <td>{{tr.earned}}</td>
+                    <td class="text-primary">{{tr.received_from}}</td>
+                    <td class="text-primary">{{tr.mobile}}</td>
+                    <td><button class="btn btn-sm btn-danger" type="button" (click)="copyRepId(tr.id);delWarn()"><i class="fa-solid fa-trash-can"></i></button></td>
+                  </tr>
+                </tbody>
+            </table>
+            </div>
+            <div *ngIf="todayReps && todayReps.length !== 0"  class="d-flex justify-content-center">
+                <pagination-controls
+                  id="todayRecords"
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChangeToday($event)"
+                >
+                </pagination-controls>
+                <a *ngIf="todayReps && todayReps.length !== 0"  routerLink="/print/reports/today"><button class="btn btn-primary btn-sm"><i class="fa-solid fa-print"></i> print</button></a>
+            </div>
+            <br>
+            <h1 class="text-center">All Reports</h1>
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <div *ngIf="!allReps || allReps.length == 0" class="card text-bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                          <p class="card-text">All reports will appear here as soon as something is uploaded.</p>
+                          <a href="/"><button class="btn btn-primary btn-sm">Upload Now</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            <div class="table-responsive">
+              <table *ngIf="allReps && allReps.length !== 0" class="table table-success table-stripped table-hover table-bordered table-responsive">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Delivered</th>
+                    <th scope="col">Delivered By</th>
+                    <th scope="col">Price Per Ltr</th>
+                    <th scope="col">Amount (Lts)</th>
+                    <th scope="col">Earned (Ksh)</th>
+                    <th scope="col">Received From (Name)</th>
+                    <th scope="col">Mobile No.</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let all of allReps | paginate: { id:'allRecords', itemsPerPage: tableSize, currentPage: page, totalItems: count}; let i = index">
+                  <tr>
+                    <th scope="row">{{all.id}}</th>
+                    <td class="text-primary">{{all.time | date: 'short'}}</td>
+                    <td class="text-primary">{{all.delivered_by}}</td>
+                    <td>{{all.price_pl}}</td>
+                    <td>{{all.amount}}</td>
+                    <td>{{all.earned}}</td>
+                    <td class="text-primary">{{all.received_from}}</td>
+                    <td class="text-primary">{{all.mobile}}</td>
+                    <td><button class="btn btn-sm btn-danger" type="button" (click)="copyRepId(all.id);delWarn()"><i class="fa-solid fa-trash-can"></i></button></td>
+                  </tr>
+                </tbody>
+            </table>
+            </div>
+            <div *ngIf="allReps && allReps.length !== 0" class="d-flex justify-content-center">
+                <pagination-controls
+                  id="allRecords"
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"
+                >
+                </pagination-controls>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+          <br><br>
+            <div class="shadow bg-light padding-md rounded">
+              <h1 class="text-center">Cumulative Report for <br> <span class="text-primary">{{today | date: 'fullDate'}}</span></h1>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div *ngIf="!dailyCumul || dailyCumul.amount == null" class="card text-bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                          <p class="card-text">Today's cumulative report will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <table *ngIf="dailyCumul && dailyCumul.amount !== null" class="table table-primary table-stripped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Cumulative Amount (Lts)</th>
+                    <th scope="col">Cumulative Earned (Ksh)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-primary">{{dailyCumul.amount}}</td>
+                    <td class="text-primary">{{dailyCumul.earned}}</td>
+                  </tr>
+                </tbody>
+            </table>
+            <div class="row" *ngIf="dailyCumul && dailyCumul.amount !== null">
+                <div class="col-lg-6">
+                    <form id="emailDailyForm" #emailDailyForm="ngForm" (ngSubmit)="emailDailyReport(emailDailyForm.value)">
+                        <mat-form-field appearance="outline" class="w-25 hide margin">
+                            <mat-label>Amount</mat-label>
+                            <input type="number" matInput [(ngModel)]="dailyCumul.amount" name="amount" ngModel #amount="ngModel">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="w-25 hide margin">
+                            <mat-label>Earned</mat-label>
+                            <input type="earned" matInput [(ngModel)]="dailyCumul.earned" name="earned" ngModel #earned="ngModel">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="w-25 hide margin">
+                            <mat-label>Day</mat-label>
+                            <input type="text" matInput [(ngModel)]="fullDate" name="day" ngModel #day="ngModel">
+                        </mat-form-field>
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-envelope"></i> email</button>
+                    </form>
+                </div>
+                <br><br>
+                <div class="col-lg-6">
+                    <a routerLink="/print/cumulative/daily"><button class="btn btn-primary btn-sm"><i class="fa-solid fa-print"></i> print</button></a>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <h1 class="text-center">Cumulative Report for <br> <span class="text-primary">{{date}}</span></h1>
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div *ngIf="!monthlyCumul || monthlyCumul.amount == null" class="card text-bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card-body">
+                          <p class="card-text">This month's cumulative report will appear here</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+            <table *ngIf="monthlyCumul && monthlyCumul.amount !== null" class="table table-primary table-stripped table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Cumulative Amount (Lts)</th>
+                    <th scope="col">Cumulative Earned (Ksh)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-primary">{{monthlyCumul.amount}}</td>
+                    <td class="text-primary">{{monthlyCumul.earned}}</td>
+                  </tr>
+                </tbody>
+            </table>
+            <div class="row" *ngIf="monthlyCumul && monthlyCumul.amount !== null">
+                <div class="col-lg-6">
+                    <form id="emailMonthlyForm" #emailMonthlyForm="ngForm" (ngSubmit)="emailMonthlyReport(emailMonthlyForm.value)">
+                        <mat-form-field appearance="outline" class="w-25 hide margin">
+                            <mat-label>Amount</mat-label>
+                            <input type="number" matInput [(ngModel)]="monthlyCumul.amount" name="amount" ngModel #amount="ngModel">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="w-25 hide margin">
+                            <mat-label>Earned</mat-label>
+                            <input type="number" matInput [(ngModel)]="monthlyCumul.earned" name="earned" ngModel #earned="ngModel">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="w-25 hide margin">
+                            <mat-label>Month</mat-label>
+                            <input type="text" matInput [(ngModel)]="date" name="month" ngModel #month="ngModel">
+                        </mat-form-field>
+                        <button class="btn btn-primary btn-sm" type="submit"><i class="fa-solid fa-envelope"></i> email</button>
+                    </form>
+                </div>
+                <br><br>
+                <div class="col-lg-6">
+                    <a routerLink="/print/cumulative/monthly"><button class="btn btn-primary btn-sm"><i class="fa-solid fa-print"></i> print</button></a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+</div>
