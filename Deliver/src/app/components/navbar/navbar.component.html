@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg bg-light sticky-top bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand blue" href="/"><i class="fa-solid fa-truck"></i> Delivered</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link blue" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link blue" href="/reports">Reports</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+        </ul>
+        <div>
+          <ul class="navbar-nav">
+            <li class="nav-item" *ngIf="!authenticated">
+              <a class="nav-link orange" href="/auth"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+            </li>
+            <li class="nav-item" *ngIf="authenticated">
+              <a class="nav-link orange"><i class="fa-solid fa-user-tie"></i> {{username}}</a>
+            </li>
+            <li class="nav-item" *ngIf="authenticated">
+              <a class="nav-link orange" type="button" (click)="logout()"><i class="fa-solid fa-door-open"></i> Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</nav>
