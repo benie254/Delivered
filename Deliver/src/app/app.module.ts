@@ -32,6 +32,28 @@ import { DailyCumulativeComponent } from './components/print/daily-cumulative/da
 import { MonthlyCumulativeComponent } from './components/print/monthly-cumulative/monthly-cumulative.component';
 import { TodayReportsComponent } from './components/print/today-reports/today-reports.component';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBsyzsEmPDgX6lkVWnYWY9LfYh8ybuTdZc",
+  authDomain: "benie-d64a6.firebaseapp.com",
+  projectId: "benie-d64a6",
+  storageBucket: "benie-d64a6.appspot.com",
+  messagingSenderId: "178130125711",
+  appId: "1:178130125711:web:3f9049bf16bc4a4cb001fa",
+  measurementId: "G-G51YVEX184"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 @NgModule({
   declarations: [
     AppComponent,
