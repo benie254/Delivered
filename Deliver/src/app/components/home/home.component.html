@@ -1,1 +1,31 @@
-<p>home works!</p>
+<div class="container">
+    <div class="container padding-md bg-light shadow">
+        <br>
+        <h1 class="text-center text-primary">{{today | date: 'fullDate'}}</h1>
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Record Milk Delivery
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Click here
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-delivery-form></app-delivery-form>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+    <br><br>
+    <div class="container">
+        <h2>How To Use This Application</h2>
+        <p><i class="fa-solid fa-hand-point-up"></i> Step 1</p>
+        <p>Click on the expansion panel above, titled: <span class="text-primary">Record Milk Delivery</span>.</p>
+        <p><i class="fa-solid fa-hand-point-up"></i> Step 2</p>
+        <p>Enter all the details requested by the form that appears.</p>
+        <p><i class="fa-solid fa-hand-point-up"></i> Step 3</p>
+        <p>Click the <button class="btn btn-danger btn-sm disabled">Submit</button> button to upload the data.</p>
+    </div>
+    <br><br><br>
+</div>
