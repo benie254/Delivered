@@ -41,7 +41,7 @@ Delete report(s)  |  Email service
 * [NGX Pagination](https://www.npmjs.com/package/ngx-pagination/)- app pagination.
 * [Notiflix](https://notiflix.github.io/)- loading & notifications.
 ### Back-end development
-[Click here for Back-end logic](https://github.com/benie254/Delivered-API/)
+* [Click here for Back-end logic](https://github.com/benie254/Delivered-API/)
 
 ## Other Resources Used 
 
