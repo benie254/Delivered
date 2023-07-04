@@ -1,7 +1,7 @@
 # Delivered
 A milk delivery system
 
-# MyPortfolio
+# Delivered
 #### An application that handles milk deliveries and sends SMS reports to the administration, generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4
 ### Author ###
 [Benson Langat](https://github.com/benie254)
