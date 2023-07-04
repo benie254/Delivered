@@ -128,7 +128,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## License
 
-Copyright (c) 2023 [Benson Langat](https://github.com/benie254)
+Copyright (c) 2023 **[Benson Langat](https://github.com/benie254)**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
