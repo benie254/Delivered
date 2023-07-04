@@ -3,10 +3,10 @@ A milk delivery system
 
 # Delivered
 #### An application that handles milk deliveries and sends SMS reports to the administration, generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4
-### Author ###
+### Author 
 [Benson Langat](https://github.com/benie254)
 
-### Description ###
+### Description 
 This is a simple delivery system, which enables users to record milk deliveries. Each recorded delivery generates an SMS message sent to the admin. The app also generates daily delivery reports posted on the website, including daily & monthly cumulative reports. Upon authentication, the admin can view all the above reports, delete any number of them, request prints/downloadable pdf files & request email reports. All the available functionalities include Creating, Reading, and Deleting (CRD) delivery reports.
 
 #### Standard users can do the following:
